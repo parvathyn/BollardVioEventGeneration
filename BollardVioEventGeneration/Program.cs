@@ -10,6 +10,9 @@ namespace BollardVioEventGeneration
     {
         static void Main(string[] args)
         {
+            BollardVioEventGeneration bioEventGeneration = new BollardVioEventGeneration(8075);
+            bioEventGeneration.GenerateBollardVioEvent();
+            var stop = 1;
         }
     }
 }

@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BollardVioEventGeneration", "BollardVioEventGeneration\BollardVioEventGeneration.csproj", "{EAAF2ED9-C52C-41A6-BA01-43887B24CB07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BollardVioEvent", "Bollard\BollardVioEvent.csproj", "{BD4910B0-E0A0-4858-9120-AB7AF2B2B78E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BollardVioEventEntity", "BollardVioEventEntity\BollardVioEventEntity.csproj", "{0CD62ACA-A36D-4D98-9DD2-EACC3CAA6F5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EAAF2ED9-C52C-41A6-BA01-43887B24CB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAAF2ED9-C52C-41A6-BA01-43887B24CB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAAF2ED9-C52C-41A6-BA01-43887B24CB07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD4910B0-E0A0-4858-9120-AB7AF2B2B78E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD4910B0-E0A0-4858-9120-AB7AF2B2B78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD4910B0-E0A0-4858-9120-AB7AF2B2B78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD4910B0-E0A0-4858-9120-AB7AF2B2B78E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD62ACA-A36D-4D98-9DD2-EACC3CAA6F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD62ACA-A36D-4D98-9DD2-EACC3CAA6F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD62ACA-A36D-4D98-9DD2-EACC3CAA6F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD62ACA-A36D-4D98-9DD2-EACC3CAA6F5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

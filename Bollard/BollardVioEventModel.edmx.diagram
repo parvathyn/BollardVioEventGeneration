@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="861f10bd3a5340c185d898effda4ed4a" Name="Diagram1">
+        <EntityTypeShape EntityType="BollardVioEventModel.BOLLARDIMAGEOCCUPANCY" Width="1.5" PointX="10.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.BollardImage" Width="1.5" PointX="13" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.enf_permits" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.EnfVendorPayStation" Width="1.5" PointX="5.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.EnfVendorStall" Width="1.5" PointX="8" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.EnfVendorTransaction" Width="1.5" PointX="8" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.HousingMaster" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.MeterMap" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.Meter" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.ParkingSpaceOccupancy" Width="1.5" PointX="10.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BollardVioEventModel.ParkingSpaceOccupancyAudit" Width="1.5" PointX="13" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="BollardVioEventModel.FK_BollardImages_BOLLARDIMAGEOCCUPANCY" ManuallyRouted="false" />
+        <AssociationConnector Association="BollardVioEventModel.FK_EnfVendorStall_PayStationId" ManuallyRouted="false" />
+        <AssociationConnector Association="BollardVioEventModel.FK_EnfVendorTransaction_PayStationId" ManuallyRouted="false" />
+        <AssociationConnector Association="BollardVioEventModel.FK_MeterMap_HousingMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="BollardVioEventModel.FK_MeterMap_Meters" ManuallyRouted="false" />
+        <AssociationConnector Association="BollardVioEventModel.FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BollardVioEventModel.EnfBollardLPREvent" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="BollardVioEventModel.EnfBollardVioEvent" Width="1.5" PointX="3.375" PointY="14.75" />
+        <EntityTypeShape EntityType="BollardVioEventModel.enfbollardvioeventTest" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BollardVioEventModel.Zone" Width="1.5" PointX="15.375" PointY="8" />
+        <AssociationConnector Association="BollardVioEventModel.FK_MeterMap_Zones" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

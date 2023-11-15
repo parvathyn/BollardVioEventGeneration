@@ -1,0 +1,1720 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BollardVioEventModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BOLLARDIMAGEOCCUPANCY">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditID" Type="bigint" />
+          <Property Name="ParkingSpaceOccupancyId" Type="bigint" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="MeterId" Type="int" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" />
+          <Property Name="FileLayout" Type="nvarchar" MaxLength="10" />
+          <Property Name="PlateAlternate" Type="nvarchar" MaxLength="100" />
+          <Property Name="StateAlternate" Type="nvarchar" MaxLength="150" />
+          <Property Name="Make" Type="nvarchar" MaxLength="100" />
+          <Property Name="Model" Type="nvarchar" MaxLength="100" />
+          <Property Name="Color" Type="nvarchar" MaxLength="100" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="PlateScore" Type="float" />
+          <Property Name="PlateDetails" Type="nvarchar(max)" />
+          <Property Name="BollardPeerID" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="OldPlateAlternate" Type="nvarchar" MaxLength="200" />
+          <Property Name="PlateModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="PlateModifiedOn" Type="datetime" />
+          <Property Name="Source" Type="varchar" MaxLength="200" />
+          <Property Name="PlateIdentified" Type="nvarchar" MaxLength="200" />
+          <Property Name="SourceID" Type="int" />
+          <Property Name="ImageTS" Type="datetime2" Precision="3" />
+        </EntityType>
+        <EntityType Name="BollardImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="BollardImageOccupancyId" Type="bigint" Nullable="false" />
+          <Property Name="BollardImage" Type="varbinary(max)" />
+          <Property Name="BollardImageBase64" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="enf_permits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ENFCustomerId" Type="int" Nullable="false" />
+          <Property Name="ENFCreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ENFPlateNo" Type="varchar" MaxLength="255" />
+          <Property Name="ENFState" Type="nvarchar" MaxLength="255" />
+          <Property Name="ENFSource" Type="varchar" MaxLength="255" />
+          <Property Name="ENFType" Type="varchar" MaxLength="255" />
+          <Property Name="EnfFileDateTime" Type="datetime" />
+          <Property Name="ENFFileSource" Type="nvarchar(max)" />
+          <Property Name="ENFEndDate" Type="datetime" />
+          <Property Name="ENFPermitID" Type="nvarchar" MaxLength="100" />
+          <Property Name="ZoneName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ENFPermitNo" Type="nvarchar" MaxLength="255" />
+          <Property Name="ZoneID" Type="varchar" MaxLength="50" />
+          <Property Name="StartDateTime" Type="datetime" />
+          <Property Name="EndDateTime" Type="datetime" />
+          <Property Name="TxnDateTime" Type="datetime" />
+          <Property Name="TxnReferenceId" Type="varchar" MaxLength="100" />
+          <Property Name="DIST_CODE" Type="nvarchar" MaxLength="250" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="250" />
+          <Property Name="A1" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="EnfBollardLPREvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnfCustomerId" Type="bigint" />
+          <Property Name="EnfVendorId" Type="bigint" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="EnfPayStationId" Type="bigint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="EnfZoneId" Type="bigint" />
+          <Property Name="EnfZoneName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Block" Type="nvarchar" MaxLength="200" />
+          <Property Name="Street" Type="nvarchar" MaxLength="256" />
+          <Property Name="ViolationDatetime" Type="datetime" />
+          <Property Name="LPEntryDatetime" Type="datetime" />
+          <Property Name="LPExitDatetime" Type="datetime" />
+          <Property Name="PlateNumber" Type="varchar" MaxLength="24" />
+          <Property Name="Make" Type="nvarchar" MaxLength="200" />
+          <Property Name="Model" Type="nvarchar" MaxLength="200" />
+          <Property Name="Color" Type="nvarchar" MaxLength="200" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="UpDatedDate" Type="datetime" />
+          <Property Name="PlateImage" Type="nvarchar(max)" />
+          <Property Name="ContextImage" Type="nvarchar(max)" />
+          <Property Name="OverviewImage" Type="nvarchar(max)" />
+          <Property Name="BollardEntryRefId" Type="bigint" />
+          <Property Name="HitId" Type="varchar" MaxLength="100" />
+          <Property Name="HitType" Type="int" />
+          <Property Name="AlertStatus" Type="varchar" MaxLength="500" />
+          <Property Name="State" Type="nvarchar" MaxLength="200" />
+          <Property Name="BollardUserAction" Type="nvarchar" MaxLength="500" />
+          <Property Name="RejectReason" Type="nvarchar" MaxLength="500" />
+          <Property Name="HIT_ACCEPT_REASONS" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsException" Type="bit" />
+          <Property Name="IsViolated" Type="bit" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+          <Property Name="UserAction" Type="nvarchar" MaxLength="100" />
+          <Property Name="NewStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="Citation_Number" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="100" />
+          <Property Name="SpaceType" Type="int" />
+          <Property Name="OldPlateNumber" Type="varchar" MaxLength="24" />
+          <Property Name="PlateModifiedOn" Type="datetime" />
+          <Property Name="PlateModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="Source" Type="varchar" MaxLength="255" />
+          <Property Name="PlateImageId" Type="bigint" />
+          <Property Name="IsAbandoned" Type="bit" />
+          <Property Name="AbandonedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EnfBollardVioEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnfCustomerId" Type="bigint" />
+          <Property Name="EnfVendorId" Type="bigint" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="EnfPayStationId" Type="bigint" />
+          <Property Name="GlobalMeterId" Type="bigint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="SpaceName" Type="nvarchar" MaxLength="256" />
+          <Property Name="EnfZoneId" Type="bigint" />
+          <Property Name="EnfZoneName" Type="nvarchar" MaxLength="200" />
+          <Property Name="PlateNumber" Type="varchar" MaxLength="24" />
+          <Property Name="State" Type="varchar" MaxLength="24" />
+          <Property Name="LPEntryDatetime" Type="datetime" />
+          <Property Name="LPExitDatetime" Type="datetime" />
+          <Property Name="ExpectedAmount" Type="int" />
+          <Property Name="EntryImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExitImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="PaymentStartTime" Type="datetime" />
+          <Property Name="PaymentEndTime" Type="datetime" />
+          <Property Name="PaymentAmount" Type="int" />
+          <Property Name="ViolatedStatus" Type="int" />
+          <Property Name="ViolationDuration" Type="int" />
+          <Property Name="IsWarning" Type="int" />
+          <Property Name="TicketNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="Make" Type="nvarchar" MaxLength="100" />
+          <Property Name="Model" Type="nvarchar" MaxLength="100" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentStatus" Type="int" />
+          <Property Name="PaymentStatusReason" Type="nvarchar" MaxLength="500" />
+          <Property Name="PaymentStatusTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="enfbollardvioeventTest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnfCustomerId" Type="bigint" />
+          <Property Name="EnfVendorId" Type="bigint" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="EnfPayStationId" Type="bigint" />
+          <Property Name="GlobalMeterId" Type="bigint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="SpaceName" Type="nvarchar" MaxLength="256" />
+          <Property Name="EnfZoneId" Type="bigint" />
+          <Property Name="EnfZoneName" Type="nvarchar" MaxLength="200" />
+          <Property Name="PlateNumber" Type="varchar" MaxLength="24" />
+          <Property Name="State" Type="varchar" MaxLength="24" />
+          <Property Name="LPEntryDatetime" Type="datetime" />
+          <Property Name="LPExitDatetime" Type="datetime" />
+          <Property Name="ExpectedAmount" Type="int" />
+          <Property Name="EntryImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExitImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="PaymentStartTime" Type="datetime" />
+          <Property Name="PaymentEndTime" Type="datetime" />
+          <Property Name="PaymentAmount" Type="int" />
+          <Property Name="ViolatedStatus" Type="int" />
+          <Property Name="ViolationDuration" Type="int" />
+          <Property Name="IsWarning" Type="int" />
+          <Property Name="TicketNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EnfVendorPayStation">
+          <Key>
+            <PropertyRef Name="EnfVPSId" />
+          </Key>
+          <Property Name="EnfVPSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnfCustomerId" Type="bigint" Nullable="false" />
+          <Property Name="EnfVendorId" Type="bigint" Nullable="false" />
+          <Property Name="SerialNumber" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="RegionId" Type="int" />
+          <Property Name="CSMeterId" Type="int" />
+          <Property Name="CSCustomerId" Type="int" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="longitude" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="TimeZoneID" Type="int" />
+          <Property Name="Block" Type="varchar" MaxLength="15" />
+          <Property Name="Direction" Type="varchar" MaxLength="32" />
+          <Property Name="StreetType" Type="varchar" MaxLength="64" />
+          <Property Name="CrossStreet1" Type="varchar" MaxLength="50" />
+          <Property Name="CrossStreet2" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EnfVendorStall">
+          <Key>
+            <PropertyRef Name="EnfVendorStallId" />
+          </Key>
+          <Property Name="EnfVendorStallId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnfCustomerId" Type="bigint" Nullable="false" />
+          <Property Name="EnfVendorId" Type="bigint" Nullable="false" />
+          <Property Name="StallNumber" Type="int" Nullable="false" />
+          <Property Name="Expiry" Type="datetime" />
+          <Property Name="PurchasedOn" Type="datetime" />
+          <Property Name="EnfVSStatus" Type="tinyint" />
+          <Property Name="SettingId" Type="int" />
+          <Property Name="CSParkingSpaceId" Type="bigint" />
+          <Property Name="SteetName" Type="varchar" MaxLength="128" />
+          <Property Name="Location" Type="varchar" MaxLength="64" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="ZoneId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="RegionId" Type="int" />
+          <Property Name="PayStationId" Type="int" />
+          <Property Name="Block" Type="varchar" MaxLength="30" />
+          <Property Name="Direction" Type="varchar" MaxLength="32" />
+          <Property Name="StreetType" Type="varchar" MaxLength="64" />
+          <Property Name="CrossStreet1" Type="varchar" MaxLength="50" />
+          <Property Name="CrossStreet2" Type="varchar" MaxLength="50" />
+          <Property Name="MeterID" Type="varchar" MaxLength="15" />
+          <Property Name="TimeZoneID" Type="int" />
+          <Property Name="SpaceType" Type="int" />
+        </EntityType>
+        <EntityType Name="EnfVendorTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnfCustomerId" Type="bigint" />
+          <Property Name="EnfVendorId" Type="bigint" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="RegionId" Type="int" />
+          <Property Name="PayStationId" Type="int" />
+          <Property Name="SettingsId" Type="int" />
+          <Property Name="TicketNumber" Type="bigint" />
+          <Property Name="StallId" Type="bigint" />
+          <Property Name="PurchasedDate" Type="datetime" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="PaymentType" Type="int" />
+          <Property Name="TransactionType" Type="int" />
+          <Property Name="CardType" Type="varchar" MaxLength="32" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="24" />
+          <Property Name="CardPocessingRetries" Type="int" />
+          <Property Name="CardProcessingTxnId" Type="varchar" MaxLength="124" />
+          <Property Name="PaidCitationNumber" Type="varchar" MaxLength="124" />
+          <Property Name="ExcessAmountPaid" Type="varchar" MaxLength="32" />
+          <Property Name="RefundTicketAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RefundChangeIssued" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ChargedAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCashAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCardAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RateId" Type="int" />
+          <Property Name="RateName" Type="varchar" MaxLength="64" />
+          <Property Name="PlateNumber" Type="varchar" MaxLength="32" />
+          <Property Name="PayByCellVendorId" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="SerialNumber" Type="varchar" MaxLength="124" />
+          <Property Name="paystationType" Type="varchar" MaxLength="124" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="cardProcessingAuthorizationNumber" Type="varchar" MaxLength="124" />
+          <Property Name="cardProcessingDate" Type="datetime" />
+          <Property Name="cardProcessingStatus" Type="varchar" MaxLength="124" />
+          <Property Name="cardProcessingReferenceNumber" Type="varchar" MaxLength="124" />
+          <Property Name="cardProcessingMerchantAccount" Type="varchar" MaxLength="124" />
+          <Property Name="couponNumber" Type="varchar" MaxLength="124" />
+          <Property Name="couponDiscountPercent" Type="int" />
+          <Property Name="couponDiscountDollar" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RateValue" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ArticleID" Type="int" />
+          <Property Name="TerminalID" Type="varchar" MaxLength="255" />
+          <Property Name="ArticleName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ParkingSpaceID" Type="varchar" MaxLength="500" />
+          <Property Name="ParkingSpaceTerminalGroup" Type="varchar" MaxLength="500" />
+          <Property Name="RegistrationNumberState" Type="varchar" MaxLength="100" />
+          <Property Name="CARCODE" Type="nvarchar" MaxLength="100" />
+          <Property Name="CARCODEID" Type="int" />
+          <Property Name="CarPlateNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="MotoristAccountNumber" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="HousingMaster">
+          <Key>
+            <PropertyRef Name="HousingId" />
+          </Key>
+          <Property Name="HousingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HousingName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Customerid" Type="int" Nullable="false" />
+          <Property Name="Block" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StreetType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StreetDirection" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StreetNotes" Type="varchar" MaxLength="50" />
+          <Property Name="HousingTypeID" Type="int" />
+          <Property Name="DoorLockId" Type="varchar" MaxLength="15" />
+          <Property Name="MechLockId" Type="varchar" MaxLength="15" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="InactiveRemarkID" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="50" />
+          <Property Name="OldHousingId" Type="int" />
+        </EntityType>
+        <EntityType Name="MeterMap">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Customerid" Type="int" Nullable="false" />
+          <Property Name="Areaid" Type="int" Nullable="false" />
+          <Property Name="MeterId" Type="int" Nullable="false" />
+          <Property Name="ZoneId" Type="int" />
+          <Property Name="HousingId" Type="int" Nullable="false" />
+          <Property Name="MechId" Type="int" />
+          <Property Name="AreaId2" Type="int" />
+          <Property Name="CollRouteId" Type="int" />
+          <Property Name="EnfRouteId" Type="int" />
+          <Property Name="MaintRouteId" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomGroup1" Type="int" />
+          <Property Name="CustomGroup2" Type="int" />
+          <Property Name="CustomGroup3" Type="int" />
+          <Property Name="SubAreaID" Type="int" />
+          <Property Name="CashBoxID" Type="int" />
+          <Property Name="CollectionRunId" Type="bigint" />
+          <Property Name="DataKeyId" Type="int" />
+          <Property Name="sensorid" Type="int" />
+          <Property Name="gatewayid" Type="int" />
+          <Property Name="CSParkId" Type="int" />
+          <Property Name="CustomField" Type="nvarchar" MaxLength="125" />
+        </EntityType>
+        <EntityType Name="Meters">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+            <PropertyRef Name="AreaID" />
+            <PropertyRef Name="MeterId" />
+          </Key>
+          <Property Name="GlobalMeterId" Type="bigint" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="AreaID" Type="int" Nullable="false" />
+          <Property Name="MeterId" Type="int" Nullable="false" />
+          <Property Name="SMSNumber" Type="varchar" MaxLength="22" />
+          <Property Name="MeterStatus" Type="int" Nullable="false" />
+          <Property Name="TimeZoneID" Type="int" Nullable="false" />
+          <Property Name="MeterRef" Type="int" Nullable="false" />
+          <Property Name="EmporiaKey" Type="char" MaxLength="32" />
+          <Property Name="MeterName" Type="varchar" MaxLength="20" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="BayStart" Type="int" />
+          <Property Name="BayEnd" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="GSMNumber" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="SchedServTime" Type="int" Nullable="false" />
+          <Property Name="RSFName" Type="varchar" MaxLength="128" />
+          <Property Name="RSFDateTime" Type="smalldatetime" />
+          <Property Name="BarCode" Type="varchar" MaxLength="20" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="16" />
+          <Property Name="MaxBaysEnabled" Type="int" />
+          <Property Name="MeterType" Type="int" />
+          <Property Name="MeterGroup" Type="int" />
+          <Property Name="MParkID" Type="int" />
+          <Property Name="MeterState" Type="int" />
+          <Property Name="DemandZone" Type="int" />
+          <Property Name="TypeCode" Type="int" />
+          <Property Name="OperationalStatusID" Type="int" />
+          <Property Name="InstallDate" Type="datetime" />
+          <Property Name="FreeParkingMinute" Type="int" />
+          <Property Name="RegulatedStatusID" Type="int" />
+          <Property Name="WarrantyExpiration" Type="datetime" />
+          <Property Name="OperationalStatusTime" Type="datetime" />
+          <Property Name="LastPreventativeMaintenance" Type="datetime" />
+          <Property Name="NextPreventativeMaintenance" Type="datetime" />
+          <Property Name="OperationalStatusEndTime" Type="datetime" />
+          <Property Name="OperationalStatusComment" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="ParkingSpaceOccupancy">
+          <Key>
+            <PropertyRef Name="ParkingSpaceOccupancyId" />
+          </Key>
+          <Property Name="ParkingSpaceOccupancyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParkingSpaceId" Type="bigint" Nullable="false" />
+          <Property Name="LastStatus" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedTS" Type="datetime" Nullable="false" />
+          <Property Name="GCustomerid" Type="int" />
+          <Property Name="GAreaId" Type="int" />
+          <Property Name="GMeterId" Type="int" />
+          <Property Name="DiagnosticData" Type="image" />
+          <Property Name="LQI" Type="int" />
+          <Property Name="GwayCustomerId" Type="int" />
+          <Property Name="GwayAreaId" Type="int" />
+          <Property Name="GwayMeterId" Type="int" />
+        </EntityType>
+        <EntityType Name="ParkingSpaceOccupancyAudit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParkingSpaceOccupancyId" Type="bigint" Nullable="false" />
+          <Property Name="LastStatus" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedTS" Type="datetime" Nullable="false" />
+          <Property Name="RecCreationDate" Type="datetime" />
+          <Property Name="ResultStatus" Type="varchar" MaxLength="64" />
+          <Property Name="GCustomerid" Type="int" />
+          <Property Name="GAreaId" Type="int" />
+          <Property Name="GMeterId" Type="int" />
+          <Property Name="DiagnosticData" Type="image" />
+          <Property Name="Regulated" Type="int" />
+          <Property Name="TimeType1" Type="int" />
+          <Property Name="TimeType2" Type="int" />
+          <Property Name="TimeType3" Type="int" />
+          <Property Name="TimeType4" Type="int" />
+          <Property Name="TimeType5" Type="int" />
+          <Property Name="EndTS" Type="datetime" />
+          <Property Name="DurationSeconds" Type="int" />
+          <Property Name="LQI" Type="int" />
+          <Property Name="GwayCustomerId" Type="int" />
+          <Property Name="GwayAreaId" Type="int" />
+          <Property Name="GwayMeterId" Type="int" />
+        </EntityType>
+        <EntityType Name="Zones">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="int" Nullable="false" />
+          <Property Name="ZoneName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZoneStatus" Type="int" />
+          <Property Name="RoadID" Type="int" />
+          <Property Name="StreetName" Type="varchar" MaxLength="500" />
+          <Property Name="BlockFrom" Type="varchar" MaxLength="500" />
+          <Property Name="BlockTo" Type="varchar" MaxLength="500" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="SubArea" Type="int" />
+          <Property Name="LengthOfZone" Type="int" />
+          <Property Name="TCMinuteNumber" Type="int" />
+          <Property Name="TCDate" Type="datetime" />
+          <Property Name="InstallDate" Type="datetime" />
+          <Property Name="DataWorks" Type="int" />
+          <Property Name="SupresededDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_BollardImages_BOLLARDIMAGEOCCUPANCY">
+          <End Role="BOLLARDIMAGEOCCUPANCY" Type="Self.BOLLARDIMAGEOCCUPANCY" Multiplicity="1" />
+          <End Role="BollardImages" Type="Self.BollardImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOLLARDIMAGEOCCUPANCY">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BollardImages">
+              <PropertyRef Name="BollardImageOccupancyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnfVendorStall_PayStationId">
+          <End Role="EnfVendorPayStation" Type="Self.EnfVendorPayStation" Multiplicity="0..1" />
+          <End Role="EnfVendorStall" Type="Self.EnfVendorStall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnfVendorPayStation">
+              <PropertyRef Name="EnfVPSId" />
+            </Principal>
+            <Dependent Role="EnfVendorStall">
+              <PropertyRef Name="PayStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnfVendorTransaction_PayStationId">
+          <End Role="EnfVendorPayStation" Type="Self.EnfVendorPayStation" Multiplicity="0..1" />
+          <End Role="EnfVendorTransaction" Type="Self.EnfVendorTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnfVendorPayStation">
+              <PropertyRef Name="EnfVPSId" />
+            </Principal>
+            <Dependent Role="EnfVendorTransaction">
+              <PropertyRef Name="PayStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeterMap_HousingMaster">
+          <End Role="HousingMaster" Type="Self.HousingMaster" Multiplicity="1" />
+          <End Role="MeterMap" Type="Self.MeterMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HousingMaster">
+              <PropertyRef Name="HousingId" />
+            </Principal>
+            <Dependent Role="MeterMap">
+              <PropertyRef Name="HousingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeterMap_Meters">
+          <End Role="Meters" Type="Self.Meters" Multiplicity="1" />
+          <End Role="MeterMap" Type="Self.MeterMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meters">
+              <PropertyRef Name="CustomerID" />
+              <PropertyRef Name="AreaID" />
+              <PropertyRef Name="MeterId" />
+            </Principal>
+            <Dependent Role="MeterMap">
+              <PropertyRef Name="Customerid" />
+              <PropertyRef Name="Areaid" />
+              <PropertyRef Name="MeterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeterMap_Zones">
+          <End Role="Zones" Type="Self.Zones" Multiplicity="0..1" />
+          <End Role="MeterMap" Type="Self.MeterMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="ZoneId" />
+            </Principal>
+            <Dependent Role="MeterMap">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy">
+          <End Role="ParkingSpaceOccupancy" Type="Self.ParkingSpaceOccupancy" Multiplicity="1" />
+          <End Role="ParkingSpaceOccupancyAudit" Type="Self.ParkingSpaceOccupancyAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParkingSpaceOccupancy">
+              <PropertyRef Name="ParkingSpaceOccupancyId" />
+            </Principal>
+            <Dependent Role="ParkingSpaceOccupancyAudit">
+              <PropertyRef Name="ParkingSpaceOccupancyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BollardVioEventModelStoreContainer">
+          <EntitySet Name="BOLLARDIMAGEOCCUPANCY" EntityType="Self.BOLLARDIMAGEOCCUPANCY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BollardImages" EntityType="Self.BollardImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="enf_permits" EntityType="Self.enf_permits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnfBollardLPREvent" EntityType="Self.EnfBollardLPREvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnfBollardVioEvent" EntityType="Self.EnfBollardVioEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="enfbollardvioeventTest" EntityType="Self.enfbollardvioeventTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnfVendorPayStation" EntityType="Self.EnfVendorPayStation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnfVendorStall" EntityType="Self.EnfVendorStall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnfVendorTransaction" EntityType="Self.EnfVendorTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HousingMaster" EntityType="Self.HousingMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeterMap" EntityType="Self.MeterMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meters" EntityType="Self.Meters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParkingSpaceOccupancy" EntityType="Self.ParkingSpaceOccupancy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParkingSpaceOccupancyAudit" EntityType="Self.ParkingSpaceOccupancyAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zones" EntityType="Self.Zones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BollardImages_BOLLARDIMAGEOCCUPANCY" Association="Self.FK_BollardImages_BOLLARDIMAGEOCCUPANCY">
+            <End Role="BOLLARDIMAGEOCCUPANCY" EntitySet="BOLLARDIMAGEOCCUPANCY" />
+            <End Role="BollardImages" EntitySet="BollardImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnfVendorStall_PayStationId" Association="Self.FK_EnfVendorStall_PayStationId">
+            <End Role="EnfVendorPayStation" EntitySet="EnfVendorPayStation" />
+            <End Role="EnfVendorStall" EntitySet="EnfVendorStall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnfVendorTransaction_PayStationId" Association="Self.FK_EnfVendorTransaction_PayStationId">
+            <End Role="EnfVendorPayStation" EntitySet="EnfVendorPayStation" />
+            <End Role="EnfVendorTransaction" EntitySet="EnfVendorTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeterMap_HousingMaster" Association="Self.FK_MeterMap_HousingMaster">
+            <End Role="HousingMaster" EntitySet="HousingMaster" />
+            <End Role="MeterMap" EntitySet="MeterMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeterMap_Meters" Association="Self.FK_MeterMap_Meters">
+            <End Role="Meters" EntitySet="Meters" />
+            <End Role="MeterMap" EntitySet="MeterMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeterMap_Zones" Association="Self.FK_MeterMap_Zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="MeterMap" EntitySet="MeterMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy" Association="Self.FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy">
+            <End Role="ParkingSpaceOccupancy" EntitySet="ParkingSpaceOccupancy" />
+            <End Role="ParkingSpaceOccupancyAudit" EntitySet="ParkingSpaceOccupancyAudit" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BollardVioEventModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BOLLARDIMAGEOCCUPANCY">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditID" Type="Int64" />
+          <Property Name="ParkingSpaceOccupancyId" Type="Int64" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="MeterId" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FileLayout" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PlateAlternate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateAlternate" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Make" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="PlateScore" Type="Double" />
+          <Property Name="PlateDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BollardPeerID" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="OldPlateAlternate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PlateModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PlateModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="Source" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PlateIdentified" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SourceID" Type="Int32" />
+          <Property Name="ImageTS" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BollardImages" Relationship="Self.FK_BollardImages_BOLLARDIMAGEOCCUPANCY" FromRole="BOLLARDIMAGEOCCUPANCY" ToRole="BollardImages" />
+        </EntityType>
+        <EntityType Name="BollardImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="BollardImageOccupancyId" Type="Int64" Nullable="false" />
+          <Property Name="BollardImage1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BollardImageBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BOLLARDIMAGEOCCUPANCY" Relationship="Self.FK_BollardImages_BOLLARDIMAGEOCCUPANCY" FromRole="BollardImages" ToRole="BOLLARDIMAGEOCCUPANCY" />
+        </EntityType>
+        <EntityType Name="enf_permits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ENFCustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ENFCreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ENFPlateNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ENFState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ENFSource" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ENFType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EnfFileDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ENFFileSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ENFEndDate" Type="DateTime" Precision="3" />
+          <Property Name="ENFPermitID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ZoneName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ENFPermitNo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ZoneID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartDateTime" Type="DateTime" Precision="3" />
+          <Property Name="EndDateTime" Type="DateTime" Precision="3" />
+          <Property Name="TxnDateTime" Type="DateTime" Precision="3" />
+          <Property Name="TxnReferenceId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DIST_CODE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="A1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EnfVendorPayStation">
+          <Key>
+            <PropertyRef Name="EnfVPSId" />
+          </Key>
+          <Property Name="EnfVPSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnfCustomerId" Type="Int64" Nullable="false" />
+          <Property Name="EnfVendorId" Type="Int64" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="RegionId" Type="Int32" />
+          <Property Name="CSMeterId" Type="Int32" />
+          <Property Name="CSCustomerId" Type="Int32" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="longitude" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="TimeZoneID" Type="Int32" />
+          <Property Name="Block" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Direction" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="StreetType" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CrossStreet1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CrossStreet2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EnfVendorStalls" Relationship="Self.FK_EnfVendorStall_PayStationId" FromRole="EnfVendorPayStation" ToRole="EnfVendorStall" />
+          <NavigationProperty Name="EnfVendorTransactions" Relationship="Self.FK_EnfVendorTransaction_PayStationId" FromRole="EnfVendorPayStation" ToRole="EnfVendorTransaction" />
+        </EntityType>
+        <EntityType Name="EnfVendorStall">
+          <Key>
+            <PropertyRef Name="EnfVendorStallId" />
+          </Key>
+          <Property Name="EnfVendorStallId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnfCustomerId" Type="Int64" Nullable="false" />
+          <Property Name="EnfVendorId" Type="Int64" Nullable="false" />
+          <Property Name="StallNumber" Type="Int32" Nullable="false" />
+          <Property Name="Expiry" Type="DateTime" Precision="3" />
+          <Property Name="PurchasedOn" Type="DateTime" Precision="3" />
+          <Property Name="EnfVSStatus" Type="Byte" />
+          <Property Name="SettingId" Type="Int32" />
+          <Property Name="CSParkingSpaceId" Type="Int64" />
+          <Property Name="SteetName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="ZoneId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="RegionId" Type="Int32" />
+          <Property Name="PayStationId" Type="Int32" />
+          <Property Name="Block" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Direction" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="StreetType" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CrossStreet1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CrossStreet2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MeterID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TimeZoneID" Type="Int32" />
+          <Property Name="SpaceType" Type="Int32" />
+          <NavigationProperty Name="EnfVendorPayStation" Relationship="Self.FK_EnfVendorStall_PayStationId" FromRole="EnfVendorStall" ToRole="EnfVendorPayStation" />
+        </EntityType>
+        <EntityType Name="EnfVendorTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnfCustomerId" Type="Int64" />
+          <Property Name="EnfVendorId" Type="Int64" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="RegionId" Type="Int32" />
+          <Property Name="PayStationId" Type="Int32" />
+          <Property Name="SettingsId" Type="Int32" />
+          <Property Name="TicketNumber" Type="Int64" />
+          <Property Name="StallId" Type="Int64" />
+          <Property Name="PurchasedDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentType" Type="Int32" />
+          <Property Name="TransactionType" Type="Int32" />
+          <Property Name="CardType" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CardNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="CardPocessingRetries" Type="Int32" />
+          <Property Name="CardProcessingTxnId" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="PaidCitationNumber" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="ExcessAmountPaid" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="RefundTicketAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RefundChangeIssued" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ChargedAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCashAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCardAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RateId" Type="Int32" />
+          <Property Name="RateName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PlateNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PayByCellVendorId" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="SerialNumber" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="paystationType" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="cardProcessingAuthorizationNumber" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="cardProcessingDate" Type="DateTime" Precision="3" />
+          <Property Name="cardProcessingStatus" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="cardProcessingReferenceNumber" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="cardProcessingMerchantAccount" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="couponNumber" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+          <Property Name="couponDiscountPercent" Type="Int32" />
+          <Property Name="couponDiscountDollar" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RateValue" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ArticleID" Type="Int32" />
+          <Property Name="TerminalID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ArticleName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ParkingSpaceID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParkingSpaceTerminalGroup" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNumberState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CARCODE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CARCODEID" Type="Int32" />
+          <Property Name="CarPlateNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MotoristAccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EnfVendorPayStation" Relationship="Self.FK_EnfVendorTransaction_PayStationId" FromRole="EnfVendorTransaction" ToRole="EnfVendorPayStation" />
+        </EntityType>
+        <EntityType Name="HousingMaster">
+          <Key>
+            <PropertyRef Name="HousingId" />
+          </Key>
+          <Property Name="HousingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HousingName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customerid" Type="Int32" Nullable="false" />
+          <Property Name="Block" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StreetType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StreetDirection" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StreetNotes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HousingTypeID" Type="Int32" />
+          <Property Name="DoorLockId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MechLockId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="InactiveRemarkID" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OldHousingId" Type="Int32" />
+          <NavigationProperty Name="MeterMaps" Relationship="Self.FK_MeterMap_HousingMaster" FromRole="HousingMaster" ToRole="MeterMap" />
+        </EntityType>
+        <EntityType Name="MeterMap">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Customerid" Type="Int32" Nullable="false" />
+          <Property Name="Areaid" Type="Int32" Nullable="false" />
+          <Property Name="MeterId" Type="Int32" Nullable="false" />
+          <Property Name="ZoneId" Type="Int32" />
+          <Property Name="HousingId" Type="Int32" Nullable="false" />
+          <Property Name="MechId" Type="Int32" />
+          <Property Name="AreaId2" Type="Int32" />
+          <Property Name="CollRouteId" Type="Int32" />
+          <Property Name="EnfRouteId" Type="Int32" />
+          <Property Name="MaintRouteId" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomGroup1" Type="Int32" />
+          <Property Name="CustomGroup2" Type="Int32" />
+          <Property Name="CustomGroup3" Type="Int32" />
+          <Property Name="SubAreaID" Type="Int32" />
+          <Property Name="CashBoxID" Type="Int32" />
+          <Property Name="CollectionRunId" Type="Int64" />
+          <Property Name="DataKeyId" Type="Int32" />
+          <Property Name="sensorid" Type="Int32" />
+          <Property Name="gatewayid" Type="Int32" />
+          <Property Name="CSParkId" Type="Int32" />
+          <Property Name="CustomField" Type="String" MaxLength="125" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HousingMaster" Relationship="Self.FK_MeterMap_HousingMaster" FromRole="MeterMap" ToRole="HousingMaster" />
+          <NavigationProperty Name="Meter" Relationship="Self.FK_MeterMap_Meters" FromRole="MeterMap" ToRole="Meters" />
+          <NavigationProperty Name="Zone" Relationship="BollardVioEventModel.FK_MeterMap_Zones" FromRole="MeterMap" ToRole="Zone" />
+        </EntityType>
+        <EntityType Name="Meter">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+            <PropertyRef Name="AreaID" />
+            <PropertyRef Name="MeterId" />
+          </Key>
+          <Property Name="GlobalMeterId" Type="Int64" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="AreaID" Type="Int32" Nullable="false" />
+          <Property Name="MeterId" Type="Int32" Nullable="false" />
+          <Property Name="SMSNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="MeterStatus" Type="Int32" Nullable="false" />
+          <Property Name="TimeZoneID" Type="Int32" Nullable="false" />
+          <Property Name="MeterRef" Type="Int32" Nullable="false" />
+          <Property Name="EmporiaKey" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="MeterName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BayStart" Type="Int32" />
+          <Property Name="BayEnd" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GSMNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchedServTime" Type="Int32" Nullable="false" />
+          <Property Name="RSFName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="RSFDateTime" Type="DateTime" Precision="0" />
+          <Property Name="BarCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="ProgramName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="MaxBaysEnabled" Type="Int32" />
+          <Property Name="MeterType" Type="Int32" />
+          <Property Name="MeterGroup" Type="Int32" />
+          <Property Name="MParkID" Type="Int32" />
+          <Property Name="MeterState" Type="Int32" />
+          <Property Name="DemandZone" Type="Int32" />
+          <Property Name="TypeCode" Type="Int32" />
+          <Property Name="OperationalStatusID" Type="Int32" />
+          <Property Name="InstallDate" Type="DateTime" Precision="3" />
+          <Property Name="FreeParkingMinute" Type="Int32" />
+          <Property Name="RegulatedStatusID" Type="Int32" />
+          <Property Name="WarrantyExpiration" Type="DateTime" Precision="3" />
+          <Property Name="OperationalStatusTime" Type="DateTime" Precision="3" />
+          <Property Name="LastPreventativeMaintenance" Type="DateTime" Precision="3" />
+          <Property Name="NextPreventativeMaintenance" Type="DateTime" Precision="3" />
+          <Property Name="OperationalStatusEndTime" Type="DateTime" Precision="3" />
+          <Property Name="OperationalStatusComment" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MeterMaps" Relationship="Self.FK_MeterMap_Meters" FromRole="Meters" ToRole="MeterMap" />
+        </EntityType>
+        <EntityType Name="ParkingSpaceOccupancy">
+          <Key>
+            <PropertyRef Name="ParkingSpaceOccupancyId" />
+          </Key>
+          <Property Name="ParkingSpaceOccupancyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParkingSpaceId" Type="Int64" Nullable="false" />
+          <Property Name="LastStatus" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdatedTS" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GCustomerid" Type="Int32" />
+          <Property Name="GAreaId" Type="Int32" />
+          <Property Name="GMeterId" Type="Int32" />
+          <Property Name="DiagnosticData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LQI" Type="Int32" />
+          <Property Name="GwayCustomerId" Type="Int32" />
+          <Property Name="GwayAreaId" Type="Int32" />
+          <Property Name="GwayMeterId" Type="Int32" />
+          <NavigationProperty Name="ParkingSpaceOccupancyAudits" Relationship="Self.FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy" FromRole="ParkingSpaceOccupancy" ToRole="ParkingSpaceOccupancyAudit" />
+        </EntityType>
+        <EntityType Name="ParkingSpaceOccupancyAudit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParkingSpaceOccupancyId" Type="Int64" Nullable="false" />
+          <Property Name="LastStatus" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdatedTS" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ResultStatus" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GCustomerid" Type="Int32" />
+          <Property Name="GAreaId" Type="Int32" />
+          <Property Name="GMeterId" Type="Int32" />
+          <Property Name="DiagnosticData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Regulated" Type="Int32" />
+          <Property Name="TimeType1" Type="Int32" />
+          <Property Name="TimeType2" Type="Int32" />
+          <Property Name="TimeType3" Type="Int32" />
+          <Property Name="TimeType4" Type="Int32" />
+          <Property Name="TimeType5" Type="Int32" />
+          <Property Name="EndTS" Type="DateTime" Precision="3" />
+          <Property Name="DurationSeconds" Type="Int32" />
+          <Property Name="LQI" Type="Int32" />
+          <Property Name="GwayCustomerId" Type="Int32" />
+          <Property Name="GwayAreaId" Type="Int32" />
+          <Property Name="GwayMeterId" Type="Int32" />
+          <NavigationProperty Name="ParkingSpaceOccupancy" Relationship="Self.FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy" FromRole="ParkingSpaceOccupancyAudit" ToRole="ParkingSpaceOccupancy" />
+        </EntityType>
+        <Association Name="FK_BollardImages_BOLLARDIMAGEOCCUPANCY">
+          <End Role="BOLLARDIMAGEOCCUPANCY" Type="Self.BOLLARDIMAGEOCCUPANCY" Multiplicity="1" />
+          <End Role="BollardImages" Type="Self.BollardImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOLLARDIMAGEOCCUPANCY">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BollardImages">
+              <PropertyRef Name="BollardImageOccupancyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnfVendorStall_PayStationId">
+          <End Role="EnfVendorPayStation" Type="Self.EnfVendorPayStation" Multiplicity="0..1" />
+          <End Role="EnfVendorStall" Type="Self.EnfVendorStall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnfVendorPayStation">
+              <PropertyRef Name="EnfVPSId" />
+            </Principal>
+            <Dependent Role="EnfVendorStall">
+              <PropertyRef Name="PayStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnfVendorTransaction_PayStationId">
+          <End Role="EnfVendorPayStation" Type="Self.EnfVendorPayStation" Multiplicity="0..1" />
+          <End Role="EnfVendorTransaction" Type="Self.EnfVendorTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnfVendorPayStation">
+              <PropertyRef Name="EnfVPSId" />
+            </Principal>
+            <Dependent Role="EnfVendorTransaction">
+              <PropertyRef Name="PayStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeterMap_HousingMaster">
+          <End Role="HousingMaster" Type="Self.HousingMaster" Multiplicity="1" />
+          <End Role="MeterMap" Type="Self.MeterMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HousingMaster">
+              <PropertyRef Name="HousingId" />
+            </Principal>
+            <Dependent Role="MeterMap">
+              <PropertyRef Name="HousingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeterMap_Meters">
+          <End Role="Meters" Type="Self.Meter" Multiplicity="1" />
+          <End Role="MeterMap" Type="Self.MeterMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meters">
+              <PropertyRef Name="CustomerID" />
+              <PropertyRef Name="AreaID" />
+              <PropertyRef Name="MeterId" />
+            </Principal>
+            <Dependent Role="MeterMap">
+              <PropertyRef Name="Customerid" />
+              <PropertyRef Name="Areaid" />
+              <PropertyRef Name="MeterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy">
+          <End Role="ParkingSpaceOccupancy" Type="Self.ParkingSpaceOccupancy" Multiplicity="1" />
+          <End Role="ParkingSpaceOccupancyAudit" Type="Self.ParkingSpaceOccupancyAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParkingSpaceOccupancy">
+              <PropertyRef Name="ParkingSpaceOccupancyId" />
+            </Principal>
+            <Dependent Role="ParkingSpaceOccupancyAudit">
+              <PropertyRef Name="ParkingSpaceOccupancyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BollardVioEventEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BOLLARDIMAGEOCCUPANCies" EntityType="Self.BOLLARDIMAGEOCCUPANCY" />
+          <EntitySet Name="BollardImages" EntityType="Self.BollardImage" />
+          <EntitySet Name="enf_permits" EntityType="Self.enf_permits" />
+          <EntitySet Name="EnfVendorPayStations" EntityType="Self.EnfVendorPayStation" />
+          <EntitySet Name="EnfVendorStalls" EntityType="Self.EnfVendorStall" />
+          <EntitySet Name="EnfVendorTransactions" EntityType="Self.EnfVendorTransaction" />
+          <EntitySet Name="HousingMasters" EntityType="Self.HousingMaster" />
+          <EntitySet Name="MeterMaps" EntityType="Self.MeterMap" />
+          <EntitySet Name="Meters" EntityType="Self.Meter" />
+          <EntitySet Name="ParkingSpaceOccupancies" EntityType="Self.ParkingSpaceOccupancy" />
+          <EntitySet Name="ParkingSpaceOccupancyAudits" EntityType="Self.ParkingSpaceOccupancyAudit" />
+          <AssociationSet Name="FK_BollardImages_BOLLARDIMAGEOCCUPANCY" Association="Self.FK_BollardImages_BOLLARDIMAGEOCCUPANCY">
+            <End Role="BOLLARDIMAGEOCCUPANCY" EntitySet="BOLLARDIMAGEOCCUPANCies" />
+            <End Role="BollardImages" EntitySet="BollardImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnfVendorStall_PayStationId" Association="Self.FK_EnfVendorStall_PayStationId">
+            <End Role="EnfVendorPayStation" EntitySet="EnfVendorPayStations" />
+            <End Role="EnfVendorStall" EntitySet="EnfVendorStalls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnfVendorTransaction_PayStationId" Association="Self.FK_EnfVendorTransaction_PayStationId">
+            <End Role="EnfVendorPayStation" EntitySet="EnfVendorPayStations" />
+            <End Role="EnfVendorTransaction" EntitySet="EnfVendorTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeterMap_HousingMaster" Association="Self.FK_MeterMap_HousingMaster">
+            <End Role="HousingMaster" EntitySet="HousingMasters" />
+            <End Role="MeterMap" EntitySet="MeterMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeterMap_Meters" Association="Self.FK_MeterMap_Meters">
+            <End Role="Meters" EntitySet="Meters" />
+            <End Role="MeterMap" EntitySet="MeterMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy" Association="Self.FK_ParkingSpaceOccupancyAudit_ParkingSpaceOccupancy">
+            <End Role="ParkingSpaceOccupancy" EntitySet="ParkingSpaceOccupancies" />
+            <End Role="ParkingSpaceOccupancyAudit" EntitySet="ParkingSpaceOccupancyAudits" />
+          </AssociationSet>
+          <EntitySet Name="EnfBollardLPREvents" EntityType="BollardVioEventModel.EnfBollardLPREvent" />
+          <EntitySet Name="EnfBollardVioEvents" EntityType="BollardVioEventModel.EnfBollardVioEvent" />
+          <EntitySet Name="enfbollardvioeventTests" EntityType="BollardVioEventModel.enfbollardvioeventTest" />
+          <EntitySet Name="Zones" EntityType="BollardVioEventModel.Zone" />
+          <AssociationSet Name="FK_MeterMap_Zones" Association="BollardVioEventModel.FK_MeterMap_Zones">
+            <End Role="Zone" EntitySet="Zones" />
+            <End Role="MeterMap" EntitySet="MeterMaps" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EnfBollardLPREvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnfCustomerId" Type="Int64" />
+          <Property Name="EnfVendorId" Type="Int64" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="EnfPayStationId" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EnfZoneId" Type="Int64" />
+          <Property Name="EnfZoneName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Block" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ViolationDatetime" Type="DateTime" Precision="3" />
+          <Property Name="LPEntryDatetime" Type="DateTime" Precision="3" />
+          <Property Name="LPExitDatetime" Type="DateTime" Precision="3" />
+          <Property Name="PlateNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="Make" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="UpDatedDate" Type="DateTime" Precision="3" />
+          <Property Name="PlateImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContextImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OverviewImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BollardEntryRefId" Type="Int64" />
+          <Property Name="HitId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HitType" Type="Int32" />
+          <Property Name="AlertStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BollardUserAction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RejectReason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HIT_ACCEPT_REASONS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsException" Type="Boolean" />
+          <Property Name="IsViolated" Type="Boolean" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="UserAction" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NewStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Citation_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SpaceType" Type="Int32" />
+          <Property Name="OldPlateNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="PlateModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="PlateModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PlateImageId" Type="Int64" />
+          <Property Name="IsAbandoned" Type="Boolean" />
+          <Property Name="AbandonedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EnfBollardVioEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnfCustomerId" Type="Int64" />
+          <Property Name="EnfVendorId" Type="Int64" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="EnfPayStationId" Type="Int64" />
+          <Property Name="GlobalMeterId" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SpaceName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EnfZoneId" Type="Int64" />
+          <Property Name="EnfZoneName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PlateNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="LPEntryDatetime" Type="DateTime" Precision="3" />
+          <Property Name="LPExitDatetime" Type="DateTime" Precision="3" />
+          <Property Name="ExpectedAmount" Type="Int32" />
+          <Property Name="EntryImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ExitImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStartTime" Type="DateTime" Precision="3" />
+          <Property Name="PaymentEndTime" Type="DateTime" Precision="3" />
+          <Property Name="PaymentAmount" Type="Int32" />
+          <Property Name="ViolatedStatus" Type="Int32" />
+          <Property Name="ViolationDuration" Type="Int32" />
+          <Property Name="IsWarning" Type="Int32" />
+          <Property Name="TicketNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="Make" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStatus" Type="Int32" />
+          <Property Name="PaymentStatusReason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStatusTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="enfbollardvioeventTest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnfCustomerId" Type="Int64" />
+          <Property Name="EnfVendorId" Type="Int64" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="EnfPayStationId" Type="Int64" />
+          <Property Name="GlobalMeterId" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SpaceName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EnfZoneId" Type="Int64" />
+          <Property Name="EnfZoneName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PlateNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="LPEntryDatetime" Type="DateTime" Precision="3" />
+          <Property Name="LPExitDatetime" Type="DateTime" Precision="3" />
+          <Property Name="ExpectedAmount" Type="Int32" />
+          <Property Name="EntryImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ExitImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStartTime" Type="DateTime" Precision="3" />
+          <Property Name="PaymentEndTime" Type="DateTime" Precision="3" />
+          <Property Name="PaymentAmount" Type="Int32" />
+          <Property Name="ViolatedStatus" Type="Int32" />
+          <Property Name="ViolationDuration" Type="Int32" />
+          <Property Name="IsWarning" Type="Int32" />
+          <Property Name="TicketNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="Int32" Nullable="false" />
+          <Property Name="customerID" Type="Int32" Nullable="false" />
+          <Property Name="ZoneName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneStatus" Type="Int32" />
+          <Property Name="RoadID" Type="Int32" />
+          <Property Name="StreetName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BlockFrom" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BlockTo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="SubArea" Type="Int32" />
+          <Property Name="LengthOfZone" Type="Int32" />
+          <Property Name="TCMinuteNumber" Type="Int32" />
+          <Property Name="TCDate" Type="DateTime" Precision="3" />
+          <Property Name="InstallDate" Type="DateTime" Precision="3" />
+          <Property Name="DataWorks" Type="Int32" />
+          <Property Name="SupresededDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MeterMaps" Relationship="BollardVioEventModel.FK_MeterMap_Zones" FromRole="Zone" ToRole="MeterMap" />
+        </EntityType>
+        <Association Name="FK_MeterMap_Zones">
+          <End Type="BollardVioEventModel.Zone" Role="Zone" Multiplicity="0..1" />
+          <End Type="BollardVioEventModel.MeterMap" Role="MeterMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zone">
+              <PropertyRef Name="ZoneId" />
+            </Principal>
+            <Dependent Role="MeterMap">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BollardVioEventModelStoreContainer" CdmEntityContainer="BollardVioEventEntities">
+          <EntitySetMapping Name="BOLLARDIMAGEOCCUPANCies">
+            <EntityTypeMapping TypeName="BollardVioEventModel.BOLLARDIMAGEOCCUPANCY">
+              <MappingFragment StoreEntitySet="BOLLARDIMAGEOCCUPANCY">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="ParkingSpaceOccupancyId" ColumnName="ParkingSpaceOccupancyId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="MeterId" ColumnName="MeterId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileLayout" ColumnName="FileLayout" />
+                <ScalarProperty Name="PlateAlternate" ColumnName="PlateAlternate" />
+                <ScalarProperty Name="StateAlternate" ColumnName="StateAlternate" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="PlateScore" ColumnName="PlateScore" />
+                <ScalarProperty Name="PlateDetails" ColumnName="PlateDetails" />
+                <ScalarProperty Name="BollardPeerID" ColumnName="BollardPeerID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OldPlateAlternate" ColumnName="OldPlateAlternate" />
+                <ScalarProperty Name="PlateModifiedBy" ColumnName="PlateModifiedBy" />
+                <ScalarProperty Name="PlateModifiedOn" ColumnName="PlateModifiedOn" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="PlateIdentified" ColumnName="PlateIdentified" />
+                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+                <ScalarProperty Name="ImageTS" ColumnName="ImageTS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BollardImages">
+            <EntityTypeMapping TypeName="BollardVioEventModel.BollardImage">
+              <MappingFragment StoreEntitySet="BollardImages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="BollardImageOccupancyId" ColumnName="BollardImageOccupancyId" />
+                <ScalarProperty Name="BollardImage1" ColumnName="BollardImage" />
+                <ScalarProperty Name="BollardImageBase64" ColumnName="BollardImageBase64" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enf_permits">
+            <EntityTypeMapping TypeName="BollardVioEventModel.enf_permits">
+              <MappingFragment StoreEntitySet="enf_permits">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ENFCustomerId" ColumnName="ENFCustomerId" />
+                <ScalarProperty Name="ENFCreatedDateTime" ColumnName="ENFCreatedDateTime" />
+                <ScalarProperty Name="ENFPlateNo" ColumnName="ENFPlateNo" />
+                <ScalarProperty Name="ENFState" ColumnName="ENFState" />
+                <ScalarProperty Name="ENFSource" ColumnName="ENFSource" />
+                <ScalarProperty Name="ENFType" ColumnName="ENFType" />
+                <ScalarProperty Name="EnfFileDateTime" ColumnName="EnfFileDateTime" />
+                <ScalarProperty Name="ENFFileSource" ColumnName="ENFFileSource" />
+                <ScalarProperty Name="ENFEndDate" ColumnName="ENFEndDate" />
+                <ScalarProperty Name="ENFPermitID" ColumnName="ENFPermitID" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ENFPermitNo" ColumnName="ENFPermitNo" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="TxnDateTime" ColumnName="TxnDateTime" />
+                <ScalarProperty Name="TxnReferenceId" ColumnName="TxnReferenceId" />
+                <ScalarProperty Name="DIST_CODE" ColumnName="DIST_CODE" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="A1" ColumnName="A1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnfVendorPayStations">
+            <EntityTypeMapping TypeName="BollardVioEventModel.EnfVendorPayStation">
+              <MappingFragment StoreEntitySet="EnfVendorPayStation">
+                <ScalarProperty Name="EnfVPSId" ColumnName="EnfVPSId" />
+                <ScalarProperty Name="EnfCustomerId" ColumnName="EnfCustomerId" />
+                <ScalarProperty Name="EnfVendorId" ColumnName="EnfVendorId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="CSMeterId" ColumnName="CSMeterId" />
+                <ScalarProperty Name="CSCustomerId" ColumnName="CSCustomerId" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+                <ScalarProperty Name="CrossStreet1" ColumnName="CrossStreet1" />
+                <ScalarProperty Name="CrossStreet2" ColumnName="CrossStreet2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnfVendorStalls">
+            <EntityTypeMapping TypeName="BollardVioEventModel.EnfVendorStall">
+              <MappingFragment StoreEntitySet="EnfVendorStall">
+                <ScalarProperty Name="EnfVendorStallId" ColumnName="EnfVendorStallId" />
+                <ScalarProperty Name="EnfCustomerId" ColumnName="EnfCustomerId" />
+                <ScalarProperty Name="EnfVendorId" ColumnName="EnfVendorId" />
+                <ScalarProperty Name="StallNumber" ColumnName="StallNumber" />
+                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+                <ScalarProperty Name="PurchasedOn" ColumnName="PurchasedOn" />
+                <ScalarProperty Name="EnfVSStatus" ColumnName="EnfVSStatus" />
+                <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+                <ScalarProperty Name="CSParkingSpaceId" ColumnName="CSParkingSpaceId" />
+                <ScalarProperty Name="SteetName" ColumnName="SteetName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="PayStationId" ColumnName="PayStationId" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+                <ScalarProperty Name="CrossStreet1" ColumnName="CrossStreet1" />
+                <ScalarProperty Name="CrossStreet2" ColumnName="CrossStreet2" />
+                <ScalarProperty Name="MeterID" ColumnName="MeterID" />
+                <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
+                <ScalarProperty Name="SpaceType" ColumnName="SpaceType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnfVendorTransactions">
+            <EntityTypeMapping TypeName="BollardVioEventModel.EnfVendorTransaction">
+              <MappingFragment StoreEntitySet="EnfVendorTransaction">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EnfCustomerId" ColumnName="EnfCustomerId" />
+                <ScalarProperty Name="EnfVendorId" ColumnName="EnfVendorId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="PayStationId" ColumnName="PayStationId" />
+                <ScalarProperty Name="SettingsId" ColumnName="SettingsId" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="StallId" ColumnName="StallId" />
+                <ScalarProperty Name="PurchasedDate" ColumnName="PurchasedDate" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CardPocessingRetries" ColumnName="CardPocessingRetries" />
+                <ScalarProperty Name="CardProcessingTxnId" ColumnName="CardProcessingTxnId" />
+                <ScalarProperty Name="PaidCitationNumber" ColumnName="PaidCitationNumber" />
+                <ScalarProperty Name="ExcessAmountPaid" ColumnName="ExcessAmountPaid" />
+                <ScalarProperty Name="RefundTicketAmount" ColumnName="RefundTicketAmount" />
+                <ScalarProperty Name="RefundChangeIssued" ColumnName="RefundChangeIssued" />
+                <ScalarProperty Name="ChargedAmount" ColumnName="ChargedAmount" />
+                <ScalarProperty Name="TotalCashAmount" ColumnName="TotalCashAmount" />
+                <ScalarProperty Name="TotalCardAmount" ColumnName="TotalCardAmount" />
+                <ScalarProperty Name="RateId" ColumnName="RateId" />
+                <ScalarProperty Name="RateName" ColumnName="RateName" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="PayByCellVendorId" ColumnName="PayByCellVendorId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="paystationType" ColumnName="paystationType" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="cardProcessingAuthorizationNumber" ColumnName="cardProcessingAuthorizationNumber" />
+                <ScalarProperty Name="cardProcessingDate" ColumnName="cardProcessingDate" />
+                <ScalarProperty Name="cardProcessingStatus" ColumnName="cardProcessingStatus" />
+                <ScalarProperty Name="cardProcessingReferenceNumber" ColumnName="cardProcessingReferenceNumber" />
+                <ScalarProperty Name="cardProcessingMerchantAccount" ColumnName="cardProcessingMerchantAccount" />
+                <ScalarProperty Name="couponNumber" ColumnName="couponNumber" />
+                <ScalarProperty Name="couponDiscountPercent" ColumnName="couponDiscountPercent" />
+                <ScalarProperty Name="couponDiscountDollar" ColumnName="couponDiscountDollar" />
+                <ScalarProperty Name="RateValue" ColumnName="RateValue" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArticleName" ColumnName="ArticleName" />
+                <ScalarProperty Name="ParkingSpaceID" ColumnName="ParkingSpaceID" />
+                <ScalarProperty Name="ParkingSpaceTerminalGroup" ColumnName="ParkingSpaceTerminalGroup" />
+                <ScalarProperty Name="RegistrationNumberState" ColumnName="RegistrationNumberState" />
+                <ScalarProperty Name="CARCODE" ColumnName="CARCODE" />
+                <ScalarProperty Name="CARCODEID" ColumnName="CARCODEID" />
+                <ScalarProperty Name="CarPlateNumber" ColumnName="CarPlateNumber" />
+                <ScalarProperty Name="MotoristAccountNumber" ColumnName="MotoristAccountNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HousingMasters">
+            <EntityTypeMapping TypeName="BollardVioEventModel.HousingMaster">
+              <MappingFragment StoreEntitySet="HousingMaster">
+                <ScalarProperty Name="HousingId" ColumnName="HousingId" />
+                <ScalarProperty Name="HousingName" ColumnName="HousingName" />
+                <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+                <ScalarProperty Name="StreetDirection" ColumnName="StreetDirection" />
+                <ScalarProperty Name="StreetNotes" ColumnName="StreetNotes" />
+                <ScalarProperty Name="HousingTypeID" ColumnName="HousingTypeID" />
+                <ScalarProperty Name="DoorLockId" ColumnName="DoorLockId" />
+                <ScalarProperty Name="MechLockId" ColumnName="MechLockId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="InactiveRemarkID" ColumnName="InactiveRemarkID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="OldHousingId" ColumnName="OldHousingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeterMaps">
+            <EntityTypeMapping TypeName="BollardVioEventModel.MeterMap">
+              <MappingFragment StoreEntitySet="MeterMap">
+                <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+                <ScalarProperty Name="Areaid" ColumnName="Areaid" />
+                <ScalarProperty Name="MeterId" ColumnName="MeterId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="HousingId" ColumnName="HousingId" />
+                <ScalarProperty Name="MechId" ColumnName="MechId" />
+                <ScalarProperty Name="AreaId2" ColumnName="AreaId2" />
+                <ScalarProperty Name="CollRouteId" ColumnName="CollRouteId" />
+                <ScalarProperty Name="EnfRouteId" ColumnName="EnfRouteId" />
+                <ScalarProperty Name="MaintRouteId" ColumnName="MaintRouteId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomGroup1" ColumnName="CustomGroup1" />
+                <ScalarProperty Name="CustomGroup2" ColumnName="CustomGroup2" />
+                <ScalarProperty Name="CustomGroup3" ColumnName="CustomGroup3" />
+                <ScalarProperty Name="SubAreaID" ColumnName="SubAreaID" />
+                <ScalarProperty Name="CashBoxID" ColumnName="CashBoxID" />
+                <ScalarProperty Name="CollectionRunId" ColumnName="CollectionRunId" />
+                <ScalarProperty Name="DataKeyId" ColumnName="DataKeyId" />
+                <ScalarProperty Name="sensorid" ColumnName="sensorid" />
+                <ScalarProperty Name="gatewayid" ColumnName="gatewayid" />
+                <ScalarProperty Name="CSParkId" ColumnName="CSParkId" />
+                <ScalarProperty Name="CustomField" ColumnName="CustomField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meters">
+            <EntityTypeMapping TypeName="BollardVioEventModel.Meter">
+              <MappingFragment StoreEntitySet="Meters">
+                <ScalarProperty Name="GlobalMeterId" ColumnName="GlobalMeterId" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="MeterId" ColumnName="MeterId" />
+                <ScalarProperty Name="SMSNumber" ColumnName="SMSNumber" />
+                <ScalarProperty Name="MeterStatus" ColumnName="MeterStatus" />
+                <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
+                <ScalarProperty Name="MeterRef" ColumnName="MeterRef" />
+                <ScalarProperty Name="EmporiaKey" ColumnName="EmporiaKey" />
+                <ScalarProperty Name="MeterName" ColumnName="MeterName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="BayStart" ColumnName="BayStart" />
+                <ScalarProperty Name="BayEnd" ColumnName="BayEnd" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GSMNumber" ColumnName="GSMNumber" />
+                <ScalarProperty Name="SchedServTime" ColumnName="SchedServTime" />
+                <ScalarProperty Name="RSFName" ColumnName="RSFName" />
+                <ScalarProperty Name="RSFDateTime" ColumnName="RSFDateTime" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="MaxBaysEnabled" ColumnName="MaxBaysEnabled" />
+                <ScalarProperty Name="MeterType" ColumnName="MeterType" />
+                <ScalarProperty Name="MeterGroup" ColumnName="MeterGroup" />
+                <ScalarProperty Name="MParkID" ColumnName="MParkID" />
+                <ScalarProperty Name="MeterState" ColumnName="MeterState" />
+                <ScalarProperty Name="DemandZone" ColumnName="DemandZone" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="OperationalStatusID" ColumnName="OperationalStatusID" />
+                <ScalarProperty Name="InstallDate" ColumnName="InstallDate" />
+                <ScalarProperty Name="FreeParkingMinute" ColumnName="FreeParkingMinute" />
+                <ScalarProperty Name="RegulatedStatusID" ColumnName="RegulatedStatusID" />
+                <ScalarProperty Name="WarrantyExpiration" ColumnName="WarrantyExpiration" />
+                <ScalarProperty Name="OperationalStatusTime" ColumnName="OperationalStatusTime" />
+                <ScalarProperty Name="LastPreventativeMaintenance" ColumnName="LastPreventativeMaintenance" />
+                <ScalarProperty Name="NextPreventativeMaintenance" ColumnName="NextPreventativeMaintenance" />
+                <ScalarProperty Name="OperationalStatusEndTime" ColumnName="OperationalStatusEndTime" />
+                <ScalarProperty Name="OperationalStatusComment" ColumnName="OperationalStatusComment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParkingSpaceOccupancies">
+            <EntityTypeMapping TypeName="BollardVioEventModel.ParkingSpaceOccupancy">
+              <MappingFragment StoreEntitySet="ParkingSpaceOccupancy">
+                <ScalarProperty Name="ParkingSpaceOccupancyId" ColumnName="ParkingSpaceOccupancyId" />
+                <ScalarProperty Name="ParkingSpaceId" ColumnName="ParkingSpaceId" />
+                <ScalarProperty Name="LastStatus" ColumnName="LastStatus" />
+                <ScalarProperty Name="LastUpdatedTS" ColumnName="LastUpdatedTS" />
+                <ScalarProperty Name="GCustomerid" ColumnName="GCustomerid" />
+                <ScalarProperty Name="GAreaId" ColumnName="GAreaId" />
+                <ScalarProperty Name="GMeterId" ColumnName="GMeterId" />
+                <ScalarProperty Name="DiagnosticData" ColumnName="DiagnosticData" />
+                <ScalarProperty Name="LQI" ColumnName="LQI" />
+                <ScalarProperty Name="GwayCustomerId" ColumnName="GwayCustomerId" />
+                <ScalarProperty Name="GwayAreaId" ColumnName="GwayAreaId" />
+                <ScalarProperty Name="GwayMeterId" ColumnName="GwayMeterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParkingSpaceOccupancyAudits">
+            <EntityTypeMapping TypeName="BollardVioEventModel.ParkingSpaceOccupancyAudit">
+              <MappingFragment StoreEntitySet="ParkingSpaceOccupancyAudit">
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="ParkingSpaceOccupancyId" ColumnName="ParkingSpaceOccupancyId" />
+                <ScalarProperty Name="LastStatus" ColumnName="LastStatus" />
+                <ScalarProperty Name="LastUpdatedTS" ColumnName="LastUpdatedTS" />
+                <ScalarProperty Name="RecCreationDate" ColumnName="RecCreationDate" />
+                <ScalarProperty Name="ResultStatus" ColumnName="ResultStatus" />
+                <ScalarProperty Name="GCustomerid" ColumnName="GCustomerid" />
+                <ScalarProperty Name="GAreaId" ColumnName="GAreaId" />
+                <ScalarProperty Name="GMeterId" ColumnName="GMeterId" />
+                <ScalarProperty Name="DiagnosticData" ColumnName="DiagnosticData" />
+                <ScalarProperty Name="Regulated" ColumnName="Regulated" />
+                <ScalarProperty Name="TimeType1" ColumnName="TimeType1" />
+                <ScalarProperty Name="TimeType2" ColumnName="TimeType2" />
+                <ScalarProperty Name="TimeType3" ColumnName="TimeType3" />
+                <ScalarProperty Name="TimeType4" ColumnName="TimeType4" />
+                <ScalarProperty Name="TimeType5" ColumnName="TimeType5" />
+                <ScalarProperty Name="EndTS" ColumnName="EndTS" />
+                <ScalarProperty Name="DurationSeconds" ColumnName="DurationSeconds" />
+                <ScalarProperty Name="LQI" ColumnName="LQI" />
+                <ScalarProperty Name="GwayCustomerId" ColumnName="GwayCustomerId" />
+                <ScalarProperty Name="GwayAreaId" ColumnName="GwayAreaId" />
+                <ScalarProperty Name="GwayMeterId" ColumnName="GwayMeterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnfBollardLPREvents">
+            <EntityTypeMapping TypeName="BollardVioEventModel.EnfBollardLPREvent">
+              <MappingFragment StoreEntitySet="EnfBollardLPREvent">
+                <ScalarProperty Name="AbandonedDateTime" ColumnName="AbandonedDateTime" />
+                <ScalarProperty Name="IsAbandoned" ColumnName="IsAbandoned" />
+                <ScalarProperty Name="PlateImageId" ColumnName="PlateImageId" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="PlateModifiedBy" ColumnName="PlateModifiedBy" />
+                <ScalarProperty Name="PlateModifiedOn" ColumnName="PlateModifiedOn" />
+                <ScalarProperty Name="OldPlateNumber" ColumnName="OldPlateNumber" />
+                <ScalarProperty Name="SpaceType" ColumnName="SpaceType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Citation_Number" ColumnName="Citation_Number" />
+                <ScalarProperty Name="NewStatus" ColumnName="NewStatus" />
+                <ScalarProperty Name="UserAction" ColumnName="UserAction" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsViolated" ColumnName="IsViolated" />
+                <ScalarProperty Name="IsException" ColumnName="IsException" />
+                <ScalarProperty Name="HIT_ACCEPT_REASONS" ColumnName="HIT_ACCEPT_REASONS" />
+                <ScalarProperty Name="RejectReason" ColumnName="RejectReason" />
+                <ScalarProperty Name="BollardUserAction" ColumnName="BollardUserAction" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="AlertStatus" ColumnName="AlertStatus" />
+                <ScalarProperty Name="HitType" ColumnName="HitType" />
+                <ScalarProperty Name="HitId" ColumnName="HitId" />
+                <ScalarProperty Name="BollardEntryRefId" ColumnName="BollardEntryRefId" />
+                <ScalarProperty Name="OverviewImage" ColumnName="OverviewImage" />
+                <ScalarProperty Name="ContextImage" ColumnName="ContextImage" />
+                <ScalarProperty Name="PlateImage" ColumnName="PlateImage" />
+                <ScalarProperty Name="UpDatedDate" ColumnName="UpDatedDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="LPExitDatetime" ColumnName="LPExitDatetime" />
+                <ScalarProperty Name="LPEntryDatetime" ColumnName="LPEntryDatetime" />
+                <ScalarProperty Name="ViolationDatetime" ColumnName="ViolationDatetime" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="EnfZoneName" ColumnName="EnfZoneName" />
+                <ScalarProperty Name="EnfZoneId" ColumnName="EnfZoneId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EnfPayStationId" ColumnName="EnfPayStationId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="EnfVendorId" ColumnName="EnfVendorId" />
+                <ScalarProperty Name="EnfCustomerId" ColumnName="EnfCustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnfBollardVioEvents">
+            <EntityTypeMapping TypeName="BollardVioEventModel.EnfBollardVioEvent">
+              <MappingFragment StoreEntitySet="EnfBollardVioEvent">
+                <ScalarProperty Name="PaymentStatusTime" ColumnName="PaymentStatusTime" />
+                <ScalarProperty Name="PaymentStatusReason" ColumnName="PaymentStatusReason" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+                <ScalarProperty Name="IsWarning" ColumnName="IsWarning" />
+                <ScalarProperty Name="ViolationDuration" ColumnName="ViolationDuration" />
+                <ScalarProperty Name="ViolatedStatus" ColumnName="ViolatedStatus" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentEndTime" ColumnName="PaymentEndTime" />
+                <ScalarProperty Name="PaymentStartTime" ColumnName="PaymentStartTime" />
+                <ScalarProperty Name="ExitImage" ColumnName="ExitImage" />
+                <ScalarProperty Name="EntryImage" ColumnName="EntryImage" />
+                <ScalarProperty Name="ExpectedAmount" ColumnName="ExpectedAmount" />
+                <ScalarProperty Name="LPExitDatetime" ColumnName="LPExitDatetime" />
+                <ScalarProperty Name="LPEntryDatetime" ColumnName="LPEntryDatetime" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="EnfZoneName" ColumnName="EnfZoneName" />
+                <ScalarProperty Name="EnfZoneId" ColumnName="EnfZoneId" />
+                <ScalarProperty Name="SpaceName" ColumnName="SpaceName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GlobalMeterId" ColumnName="GlobalMeterId" />
+                <ScalarProperty Name="EnfPayStationId" ColumnName="EnfPayStationId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="EnfVendorId" ColumnName="EnfVendorId" />
+                <ScalarProperty Name="EnfCustomerId" ColumnName="EnfCustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enfbollardvioeventTests">
+            <EntityTypeMapping TypeName="BollardVioEventModel.enfbollardvioeventTest">
+              <MappingFragment StoreEntitySet="enfbollardvioeventTest">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+                <ScalarProperty Name="IsWarning" ColumnName="IsWarning" />
+                <ScalarProperty Name="ViolationDuration" ColumnName="ViolationDuration" />
+                <ScalarProperty Name="ViolatedStatus" ColumnName="ViolatedStatus" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentEndTime" ColumnName="PaymentEndTime" />
+                <ScalarProperty Name="PaymentStartTime" ColumnName="PaymentStartTime" />
+                <ScalarProperty Name="ExitImage" ColumnName="ExitImage" />
+                <ScalarProperty Name="EntryImage" ColumnName="EntryImage" />
+                <ScalarProperty Name="ExpectedAmount" ColumnName="ExpectedAmount" />
+                <ScalarProperty Name="LPExitDatetime" ColumnName="LPExitDatetime" />
+                <ScalarProperty Name="LPEntryDatetime" ColumnName="LPEntryDatetime" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="EnfZoneName" ColumnName="EnfZoneName" />
+                <ScalarProperty Name="EnfZoneId" ColumnName="EnfZoneId" />
+                <ScalarProperty Name="SpaceName" ColumnName="SpaceName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GlobalMeterId" ColumnName="GlobalMeterId" />
+                <ScalarProperty Name="EnfPayStationId" ColumnName="EnfPayStationId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="EnfVendorId" ColumnName="EnfVendorId" />
+                <ScalarProperty Name="EnfCustomerId" ColumnName="EnfCustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zones">
+            <EntityTypeMapping TypeName="BollardVioEventModel.Zone">
+              <MappingFragment StoreEntitySet="Zones">
+                <ScalarProperty Name="SupresededDate" ColumnName="SupresededDate" />
+                <ScalarProperty Name="DataWorks" ColumnName="DataWorks" />
+                <ScalarProperty Name="InstallDate" ColumnName="InstallDate" />
+                <ScalarProperty Name="TCDate" ColumnName="TCDate" />
+                <ScalarProperty Name="TCMinuteNumber" ColumnName="TCMinuteNumber" />
+                <ScalarProperty Name="LengthOfZone" ColumnName="LengthOfZone" />
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="BlockTo" ColumnName="BlockTo" />
+                <ScalarProperty Name="BlockFrom" ColumnName="BlockFrom" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="RoadID" ColumnName="RoadID" />
+                <ScalarProperty Name="ZoneStatus" ColumnName="ZoneStatus" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
